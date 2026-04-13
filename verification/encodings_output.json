@@ -1,0 +1,12 @@
+{
+  "sinusoidal_encoding_shape": [
+    1,
+    20,
+    128
+  ],
+  "learned_encoding_shape": [
+    1,
+    20,
+    128
+  ]
+}
