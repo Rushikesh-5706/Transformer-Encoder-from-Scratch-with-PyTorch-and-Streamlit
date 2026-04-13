@@ -19,3 +19,4 @@ Thumbs.db
 htmlcov/
 .coverage
 *.log
+.hf_cache/
