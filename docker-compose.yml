@@ -5,19 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: rushi5706/transformer-encoder-scratch:latest
     container_name: transformer-encoder-app
     ports:
       - "8501:8501"
     environment:
       - DEVICE=cpu
-      - NUM_EPOCHS=15
-      - BATCH_SIZE=32
-      - MAX_VOCAB_SIZE=10000
-    volumes:
-      - ./logs:/app/logs
-      - ./models:/app/models
-      - ./snapshots:/app/snapshots
-      - ./verification:/app/verification
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
       interval: 30s
