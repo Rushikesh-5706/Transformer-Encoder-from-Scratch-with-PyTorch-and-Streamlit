@@ -63,7 +63,7 @@ def load_trained_model():
         model: TransformerEncoder in eval mode.
         word2idx: Vocabulary dict mapping token strings to integer indices.
     """
-    vocab = torch.load('models/vocab.pt', map_location='cpu')
+    vocab = torch.load('models/vocab.pt', map_location='cpu', weights_only=False)
     word2idx = vocab['word2idx']
 
     model = TransformerEncoder(
@@ -77,7 +77,7 @@ def load_trained_model():
         num_classes=NUM_CLASSES,
         encoding_type='sinusoidal',
     )
-    model.load_state_dict(torch.load('models/final_model.pth', map_location='cpu'))
+    model.load_state_dict(torch.load('models/final_model.pth', map_location='cpu', weights_only=False))
     model.eval()
     return model, word2idx
 
@@ -121,7 +121,7 @@ def tokenize_and_encode(text, word2idx, max_len):
 st.sidebar.header("Controls")
 selected_layer = st.sidebar.selectbox("Encoder Layer", options=list(range(NUM_LAYERS)), index=0)
 selected_head = st.sidebar.selectbox("Attention Head", options=list(range(NUM_HEADS)), index=0)
-encoding_type_display = st.sidebar.radio("Positional Encoding Type", ["Sinusoidal", "Learned"])
+st.sidebar.markdown("**Positional Encoding:** Sinusoidal (fixed, as trained)")
 
 st.sidebar.markdown("---")
 st.sidebar.markdown(
