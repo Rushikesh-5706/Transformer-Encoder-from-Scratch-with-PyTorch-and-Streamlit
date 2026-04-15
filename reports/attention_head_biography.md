@@ -53,7 +53,7 @@ The attention pattern observed in the heatmap for this head shows broad, near-un
 
 **Entropy trajectory:** Started at 2.9953 nats at epoch 1 and ended at 4.6451 nats at epoch 15. Total change: +1.6498 nats.
 
-This head acts as the most aggressive example of role relaxation inside the network's top layer. It begins with the lowest entropy amongst tracked metrics (2.99 nats), implying temporary early-stage specialization mimicking sharp focus. However, by epoch 15, the head practically dissolves this structure, returning its entropy completely to the near-theoretical limit for this dimension space (4.6451). This behavior indicates the early network routing gradients heavily penalized the sharp isolated peaks, smoothing them into broad representation broadcasting over the training lifespan. 
+This head acts as the most aggressive example of role relaxation inside the network's top layer. It begins with the lowest entropy amongst tracked metrics (3.00 nats), implying temporary early-stage specialization mimicking sharp focus. However, by epoch 15, the head practically dissolves this structure, returning its entropy completely to the near-theoretical limit for this dimension space (4.6451). This behavior indicates the early network routing gradients heavily penalized the sharp isolated peaks, smoothing them into broad representation broadcasting over the training lifespan. 
 
 ---
 
