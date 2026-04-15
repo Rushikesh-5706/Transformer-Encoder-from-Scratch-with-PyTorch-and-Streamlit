@@ -140,14 +140,17 @@ class SSTDataset(Dataset):
     """
 
     def __init__(self, data, word2idx, max_len):
+        """Store dataset split, vocabulary, and maximum sequence length."""
         self.data = data
         self.word2idx = word2idx
         self.max_len = max_len
 
     def __len__(self):
+        """Return number of examples in this split."""
         return len(self.data)
 
     def __getitem__(self, idx):
+        """Tokenise and encode one example, returning (input_ids tensor, label tensor)."""
         item = self.data[idx]
         # SST-2 uses 'sentence', not 'text'
         text = item['sentence']
@@ -180,6 +183,7 @@ def get_warmup_scheduler(optimizer, warmup_steps):
         A torch.optim.lr_scheduler.LambdaLR scheduler.
     """
     def lr_lambda(current_step):
+        """Return the learning rate multiplier for the given step."""
         if current_step < warmup_steps:
             return float(current_step + 1) / float(max(1, warmup_steps))
         return 1.0 / math.sqrt(current_step + 1)
