@@ -61,6 +61,7 @@ class MultiHeadAttention(nn.Module):
     """
 
     def __init__(self, d_model, num_heads):
+        """Initialise projection layers and store head configuration."""
         super().__init__()
         assert d_model % num_heads == 0, (
             f"d_model ({d_model}) must be divisible by num_heads ({num_heads})"
@@ -133,6 +134,7 @@ class PositionalEncoding(nn.Module):
     """
 
     def __init__(self, d_model, max_len, encoding_type='sinusoidal'):
+        """Build or register the positional encoding table based on encoding_type."""
         super().__init__()
         self.encoding_type = encoding_type
 
@@ -191,6 +193,7 @@ class FeedForwardNetwork(nn.Module):
     """
 
     def __init__(self, d_model, d_ff, dropout):
+        """Initialise the two linear layers and dropout."""
         super().__init__()
         self.linear1 = nn.Linear(d_model, d_ff)
         self.linear2 = nn.Linear(d_ff, d_model)
@@ -229,6 +232,7 @@ class EncoderLayer(nn.Module):
     """
 
     def __init__(self, d_model, num_heads, d_ff, dropout):
+        """Initialise attention, FFN, layer norms, and dropout for one encoder layer."""
         super().__init__()
         self.attention = MultiHeadAttention(d_model, num_heads)
         self.ffn = FeedForwardNetwork(d_model, d_ff, dropout)
@@ -294,6 +298,7 @@ class TransformerEncoder(nn.Module):
         num_classes,
         encoding_type='sinusoidal',
     ):
+        """Initialise embedding, positional encoding, encoder layers, and classifier."""
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, d_model, padding_idx=0)
         self.pos_encoding = PositionalEncoding(d_model, max_len, encoding_type)
