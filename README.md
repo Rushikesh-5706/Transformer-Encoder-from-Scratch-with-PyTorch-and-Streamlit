@@ -36,7 +36,7 @@ Positional Encoding (sinusoidal or learned)
 │  │      W_q  W_k  W_v projections  │    │
 │  │           │                     │    │
 │  │   scaled_dot_product_attention  │    │
-│  │   Q·Kᵀ / √d_k → softmax → ·V   │    │
+│  │   Q·Kᵀ / √d_k → softmax → ·V    │    │
 │  │           │                     │    │
 │  │      W_o output projection      │    │
 │  │           │                     │    │
