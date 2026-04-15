@@ -10,3 +10,4 @@ env
 *.DS_Store
 .pytest_cache
 htmlcov
+.hf_cache
